@@ -1,0 +1,4 @@
+#+Title: Org-mode for Literate Programming and Reproducible Research
+#+Author: Eric Schulte
+#+Date: <2012-03-25 Sun>
+

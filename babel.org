@@ -1,4 +1,4 @@
-#+Title: Org-mode for Literate Programming and Reproducible Research
+#+Title: Babel -- Org-mode Code Blocks
 #+Author: Eric Schulte
 #+Date: <2012-03-25 Sun>
 
@@ -54,6 +54,7 @@ Integrating programming and natural languages in Org-mode documents.
   nothing will be restrained from them
 
 #+begin_src emacs-lisp :results silent
+  ;; live code execution
   (org-toggle-inline-images)
 #+end_src
 
@@ -78,7 +79,7 @@ Integrating programming and natural languages in Org-mode documents.
 
 - /working/ notes
 
-- executable tutorials
+- executable class notes, presentations and tutorials
 
 * Syntax -- inline code, data and references
 ** Objects

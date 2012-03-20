@@ -7,6 +7,8 @@ included demonstrating the interactive use of code blocks from within
 Org-mode documents.  The intended presentation engine is epresent [3],
 however it should also be suitible for export to LaTeX Beamer format [4].
 
+Familiarity with Emacs is assumed.
+
 Footnotes:
 [1] http://orgmode.org
 [2] http://www.jstatsoft.org/v46/i03

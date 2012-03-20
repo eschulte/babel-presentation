@@ -2,7 +2,7 @@
 #+Author: Eric Schulte
 #+Date: <2012-03-25 Sun>
 
-* Org-mode /very/ brief introduction
+* Org-mode -- a /very/ brief introduction
 ** Outlines in plain text
 Outlines
 - /everything/ is an outline
@@ -42,7 +42,7 @@ including...
 - scheduling and agendas
 - task managment
 
-* Babel
+* Babel -- using code and data in your documents
 Integrating programming and natural languages in Org-mode documents.
 
 - [[file:img/tower-of-babel.png]]
@@ -57,7 +57,7 @@ Integrating programming and natural languages in Org-mode documents.
   (org-toggle-inline-images)
 #+end_src
 
-* Uses of integrated code blocks
+* Applications -- uses of integrated code and data
 
 - reproducible research
   #+begin_quote
@@ -80,3 +80,25 @@ Integrating programming and natural languages in Org-mode documents.
 
 - executable tutorials
 
+* Syntax -- inline code, data and references
+** Objects
+
+- code block ::
+
+- scalar data ::
+
+- tabular data ::
+
+- list data ::
+
+** References
+* Export -- supporting reproducible research
+* Tangling -- supporting literate programming
+* Examples -- pascals triangle in python and dot
+* Examples -- something hairy
+* Conclusion
+- open source
+- widely available
+- active community
+- general and extensible
+- integration with Emacs

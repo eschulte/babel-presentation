@@ -2,3 +2,81 @@
 #+Author: Eric Schulte
 #+Date: <2012-03-25 Sun>
 
+* Org-mode /very/ brief introduction
+** Outlines in plain text
+Outlines
+- /everything/ is an outline
+- navigate large files as if they were directories
+
+Plain Text
+- version control
+- portable
+- use other tools with other tools (e.g., notepad, =grep=)
+
+** Export
+
+:                     +------> LaTeX/PDF
+:                     |                
+:                     +------> HTML     
+:       +-----+       |           
+:       | Org |-------+------> plain text
+:       +-----+       |                 
+:                     +------> Open-Doc  
+:                     |               
+:                     +------> Bibtex, DocBook, Freemind, xoxo, S5...  
+
+** Spreadsheets and Tables
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|----|
+| 10 |
+#+TBLFM: $1=vsum(@1..@-1)
+
+** Much Much more
+(which I am not familiar with and won't focus on)
+
+including...
+- GTD (supports the "Getting Things Done" methodology)
+- scheduling and agendas
+- task managment
+
+* Babel
+Integrating programming and natural languages in Org-mode documents.
+
+- [[file:img/tower-of-babel.png]]
+  The Babel Fish is small, yellow and simultaneously translates from
+  one spoken language to another.
+
+- [[file:img/babelfish.png]]
+  The people is one and they have all one language; ... and now
+  nothing will be restrained from them
+
+#+begin_src emacs-lisp :results silent
+  (org-toggle-inline-images)
+#+end_src
+
+* Uses of integrated code blocks
+
+- reproducible research
+  #+begin_quote
+    An article about computational science in a scientific publication
+    is not the scholarship itself, it is merely advertising of the
+    scholarship. The actual scholarship is the complete software
+    development environment and complete set of instructions which
+    generated the figures.
+  #+end_quote
+  
+- literate programming
+  #+begin_quote Knuth 1984
+    Let us change our traditional attitude to the construction of
+    programs: Instead of imagining that our main task is to instruct a
+    computer what to do, let us concentrate rather on explaining to
+    human beings what we want a computer to do.
+  #+end_quote
+
+- /working/ notes
+
+- executable tutorials
+

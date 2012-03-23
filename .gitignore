@@ -3,3 +3,7 @@
 *.pdf
 *.png
 *.txt
+
+# tangled files
+run
+log-map

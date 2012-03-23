@@ -153,6 +153,36 @@ shown in Figure \ref{raw-plot}.
 [[file:raw.png]]
 
 * Tangling -- supporting literate programming
+Tangle out shell scripts to visualize a logistic map.
+
+#+begin_src sh :tangle run :shebang #!/bin/sh
+  mkfifo /tmp/feedgnuplot
+  gnuplot < /tmp/feedgnuplot &
+  
+  for i in `seq 1 5 1250`;do
+      j=`echo "$i.0 * 0.002925"|bc`
+      echo -n "$j "
+      cat <<EOF > /tmp/feedgnuplot
+  <<plot>>
+  EOF
+  done
+#+end_src
+
+#+name: plot
+#+begin_src gnuplot
+set title '$j';
+set yrange [0:1];
+plot "< ./log-map $j" notitle;
+#+end_src
+
+#+begin_src sh :tangle log-map :shebang #!/bin/sh
+prev=.50000
+for i in `seq 0.01 0.01 0.99`;do
+    echo $prev
+    prev=`echo "$1 * $prev * (1 - $prev)"|bc`
+done
+#+end_src
+
 * Examples -- pascals triangle in python and dot
 * Examples -- something hairy
 * Conclusion

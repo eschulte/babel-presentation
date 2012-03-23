@@ -1,6 +1,7 @@
 #+Title: Babel -- Org-mode Code Blocks
 #+Author: Eric Schulte
 #+Date: <2012-03-25 Sun>
+#+Options: toc:nil ^:nil
 
 * Org-mode -- a /very/ brief introduction
 ** Outlines in plain text
@@ -127,6 +128,30 @@ echo "$b"|sed 's/3/three/;s/2/two/'
 #+end_src
 
 * Export -- supporting reproducible research
+The results of our experiment are shown in Table \ref{raw}.  The mean
+of which equal to src_R[:var d=raw]{mean(d)} and a plot of which is
+shown in Figure \ref{raw-plot}.
+
+#+Caption: Our example data.
+#+label: raw
+#+name: raw
+| 1 |
+| 1 |
+| 2 |
+| 3 |
+| 5 |
+
+#+name: raw-plot
+#+begin_src gnuplot :var data=raw :file raw.png
+  plot data w l
+#+end_src
+
+#+Caption: Our example plot of our example data.
+#+label: raw-plot
+#+attr_latex: width=8cm
+#+RESULTS: raw-plot
+[[file:raw.png]]
+
 * Tangling -- supporting literate programming
 * Examples -- pascals triangle in python and dot
 * Examples -- something hairy

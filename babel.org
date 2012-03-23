@@ -31,10 +31,10 @@ Plain Text
 |  3 |
 |  4 |
 |----|
-| 10 |
+| 13 |
 #+TBLFM: $1=vsum(@1..@-1)
 
-** Much Much more
+** Much much more
 (which I am not familiar with and won't focus on)
 
 including...
@@ -46,12 +46,16 @@ including...
 Integrating programming and natural languages in Org-mode documents.
 
 - [[file:img/tower-of-babel.png]]
-  The Babel Fish is small, yellow and simultaneously translates from
-  one spoken language to another.
-
-- [[file:img/babelfish.png]]
+  #+begin_quote
   The people is one and they have all one language; ... and now
   nothing will be restrained from them
+  #+end_quote
+
+- [[file:img/babelfish.png]]
+  #+begin_quote
+  The Babel Fish is small, yellow and simultaneously translates from
+  one spoken language to another.
+  #+end_quote
 
 #+begin_src emacs-lisp :results silent
   ;; live code execution
@@ -61,7 +65,7 @@ Integrating programming and natural languages in Org-mode documents.
 * Applications -- uses of integrated code and data
 
 - reproducible research
-  #+begin_quote
+  #+begin_quote Buckheit and Donoho 1995
     An article about computational science in a scientific publication
     is not the scholarship itself, it is merely advertising of the
     scholarship. The actual scholarship is the complete software
@@ -83,16 +87,45 @@ Integrating programming and natural languages in Org-mode documents.
 
 * Syntax -- inline code, data and references
 ** Objects
+code block
+#+name: block-name
+#+begin_src language header-arguments
+  body
+#+end_src
 
-- code block ::
+- scalar data
+#+name: scalar-data
+: number or string
 
-- scalar data ::
+tabular data
+#+name: tabular-data
+| 1 | 2 |
+| 3 | 4 |
 
-- tabular data ::
-
-- list data ::
+- list data
+#+name: list-data
+- 1
+- 2
+- 3
+- 4
 
 ** References
+Objects may be referenced from inline code blocks
+
+#+name: reverse
+#+begin_src emacs-lisp :var list=list-data :results list
+  (reverse list)
+#+end_src
+
+#+name: transpose
+#+begin_src lisp :var table=tabular-data
+  (apply #'mapcar #'list table)
+#+end_src
+
+#+begin_src sh :var t=transpose :var r=reverse :var b=reverse(transpose(tabular-data))
+echo "$b"|sed 's/3/three/;s/2/two/'
+#+end_src
+
 * Export -- supporting reproducible research
 * Tangling -- supporting literate programming
 * Examples -- pascals triangle in python and dot

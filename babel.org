@@ -183,11 +183,14 @@ for i in `seq 0.01 0.01 0.99`;do
 done
 #+end_src
 
-* Examples -- pascals triangle in python and dot
-* Examples -- something hairy
+* Example -- Pascal's Triangle with Scheme and Dot
 * Conclusion
+It is fun to mix prose and code!
+
+Org-mode has many features which make it ideal for RR and LP.
 - open source
 - widely available
 - active community
 - general and extensible
 - integration with Emacs
+

@@ -183,7 +183,65 @@ for i in `seq 0.01 0.01 0.99`;do
 done
 #+end_src
 
-* Example -- Pascal's Triangle with Scheme and Dot
+* Example -- Pascal's Triangle with Lisp and Dot
+** Generating Pascal's Triangle with Lisp
+#+name: pascals-triangle
+#+begin_src lisp :var n=2
+  (defun pascals-triangle (n &aux (row '(1)))
+    (cons row
+          (loop :for i :below n
+             :do (setf row (map 'list #'+ (append row '(0)) (append '(0) row)))
+             :collect row)))
+  (pascals-triangle n)
+#+end_src
+
+** Converting Pascal's Triangle to Dot with Python
+#+name: pst-to-dot
+#+begin_src python :var pst=pascals-triangle(5) :results output :exports none
+  def node(i, j):
+      return '"%d_%d"' % (i+1, j+1)
+  
+  def edge(i1, j1, i2, j2):
+      return '%s--%s;' % (node(i1, j1), node(i2,j2))
+  
+  def node_with_edges(i, j):
+      line = '%s [label="%d"];' % (node(i, j), pst[i][j])
+      if j > 0:
+          line += edge(i-1, j-1, i, j)
+      if j < len(pst[i])-1:
+          line += edge(i-1, j, i, j)
+      return line
+  
+  pst = [filter(None, row) for row in pst]
+  
+  print '\n'.join([node_with_edges(i, j)
+                   for i in range(len(pst))
+                   for j in range(len(pst[i]))])
+#+end_src
+
+** Graphing Pascal's Triangle with Dot
+#+headers: :file pascals-triangle.png :cmdline -Tpng
+#+begin_src dot :var pst-vals=pst-to-dot :exports results
+  graph {
+          $pst-vals
+  }
+#+end_src
+
+** Checking Pascal's Triangle with Emacs Lisp
+#+name: pst-check
+#+begin_src emacs-lisp :var pst=pascals-triangle(5)
+  (defun fib (n)
+    (if (<= n 2)
+        1
+      (+ (fib (- n 1)) (fib (- n 2)))))
+  
+  (mapcar (lambda (row)
+            (if (= (fib n) (reduce #'+ row))
+                "pass"
+              "fail"))
+          pst)
+#+end_src
+
 * Conclusion
 It is fun to mix prose and code!
 

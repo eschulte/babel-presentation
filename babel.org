@@ -155,13 +155,17 @@ shown in Figure \ref{raw-plot}.
 * Tangling -- supporting literate programming
 Tangle out shell scripts to visualize a logistic map.
 
+\begin{equation*}
+  x_{n+1}=rx_{n}(1-x_{n})
+\end{equation*}
+
 #+begin_src sh :tangle run :shebang #!/bin/sh
   mkfifo /tmp/feedgnuplot
   gnuplot < /tmp/feedgnuplot &
   
   for i in `seq 1 5 1250`;do
-      j=`echo "$i.0 * 0.002925"|bc`
-      echo -n "$j "
+      r=`echo "$i.0 * 0.002925"|bc`
+      echo -n "$r "
       cat <<EOF > /tmp/feedgnuplot
   <<plot>>
   EOF
@@ -170,16 +174,16 @@ Tangle out shell scripts to visualize a logistic map.
 
 #+name: plot
 #+begin_src gnuplot
-set title '$j';
-set yrange [0:1];
-plot "< ./log-map $j" notitle;
+  set title 'r=$r';
+  set yrange [0:1];
+  plot "< ./log-map $r" notitle;
 #+end_src
 
 #+begin_src sh :tangle log-map :shebang #!/bin/sh
-prev=.50000
+x=.50000
 for i in `seq 0.01 0.01 0.99`;do
-    echo $prev
-    prev=`echo "$1 * $prev * (1 - $prev)"|bc`
+    echo $x
+    x=`echo "$1 * $x * (1 - $x)"|bc`
 done
 #+end_src
 

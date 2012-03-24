@@ -1,6 +1,7 @@
 #+Title: Babel -- Org-mode Code Blocks
 #+Author: Eric Schulte
 #+Date: <2012-03-25 Sun>
+#+URL: http://github.com/eschulte/babel-presentation
 #+Options: toc:nil ^:nil
 
 * Org-mode -- a /very/ brief introduction

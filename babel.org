@@ -65,7 +65,7 @@ Integrating programming and natural languages in Org-mode documents.
 
 * Applications -- uses of integrated code and data
 
-- reproducible research
+- Reproducible Research (RR)
   #+begin_quote Buckheit and Donoho 1995
     An article about computational science in a scientific publication
     is not the scholarship itself, it is merely advertising of the
@@ -74,7 +74,7 @@ Integrating programming and natural languages in Org-mode documents.
     generated the figures.
   #+end_quote
   
-- literate programming
+- Literate Programming (LP)
   #+begin_quote Knuth 1984
     Let us change our traditional attitude to the construction of
     programs: Instead of imagining that our main task is to instruct a
@@ -235,20 +235,25 @@ done
         1
       (+ (fib (- n 1)) (fib (- n 2)))))
   
-  (mapcar (lambda (row)
-            (if (= (fib n) (reduce #'+ row))
-                "pass"
-              "fail"))
-          pst)
+  (let (results)
+    (dotimes (n 5)
+      (let (diag)
+        (dotimes (i n)
+          (setq diag (cons (nth (- n i) (nth n pst)) diag)))
+        (setq results (cons (if (apply #'+ diag)
+                                "pass"
+                              "fail")
+                            results))))
+    results)
 #+end_src
 
-* Conclusion
-It is fun to mix prose and code!
+#+RESULTS: pst-check
+| pass | pass | pass | pass | pass |
 
-Org-mode has many features which make it ideal for RR and LP.
-- open source
+* Conclusion
+Org-mode has many features which are well suited to RR and LP.
+- open source (essential for RR)
 - widely available
 - active community
 - general and extensible
-- integration with Emacs
-
+- integrated into Emacs (will be included in Emacs24)

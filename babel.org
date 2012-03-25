@@ -252,9 +252,6 @@ done
     results)
 #+end_src
 
-#+RESULTS: pst-check
-| pass | pass | pass | pass | pass |
-
 * Conclusion
 Org-mode has many features which are well suited to RR and LP.
 - open source (essential for RR)

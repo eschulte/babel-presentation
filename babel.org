@@ -33,7 +33,7 @@ Plain Text
 |  3 |
 |  4 |
 |----|
-| 13 |
+| 10 |
 #+TBLFM: $1=vsum(@1..@-1)
 
 ** Much much more
@@ -42,7 +42,7 @@ Plain Text
 including...
 - GTD (supports the "Getting Things Done" methodology)
 - scheduling and agendas
-- task managment
+- task management
 
 * Babel -- using code and data in your documents
 Integrating programming and natural languages in Org-mode documents.
@@ -124,34 +124,34 @@ Objects may be referenced from inline code blocks
   (apply #'mapcar #'list table)
 #+end_src
 
-#+begin_src sh :var t=transpose :var r=reverse :var b=reverse(transpose(tabular-data))
-echo "$b"|sed 's/3/three/;s/2/two/'
+#+begin_src sh :var data=reverse(transpose(tabular-data))
+echo "$data"|sed 's/3/three/;s/2/two/'
 #+end_src
 
 * Export -- supporting reproducible research
-The results of our experiment are shown in Table \ref{raw}.  The mean
-of which equal to src_R[:var d=raw]{mean(d)} and a plot of which is
-shown in Figure \ref{raw-plot}.
+The results of our experiment are shown in Table \ref{example}.  The
+mean of which equal to src_R[:var d=example]{mean(d)} and a plot of
+which is shown in Figure \ref{example-plot}.
 
 #+Caption: Our example data.
-#+label: raw
-#+name: raw
+#+label: example
+#+name: example
 | 1 |
 | 1 |
 | 2 |
 | 3 |
 | 5 |
 
-#+name: raw-plot
-#+begin_src gnuplot :var data=raw :file raw.png
-  plot data w l
+#+name: example-plot
+#+begin_src gnuplot :var example_data=example :file example.png
+  plot example_data w l
 #+end_src
 
 #+Caption: Our example plot of our example data.
-#+label: raw-plot
+#+label: example-plot
 #+attr_latex: width=8cm
-#+RESULTS: raw-plot
-[[file:raw.png]]
+#+RESULTS: example-plot
+[[file:example.png]]
 
 * Tangling -- supporting literate programming
 Tangle out shell scripts to visualize a logistic map.
@@ -164,8 +164,8 @@ Tangle out shell scripts to visualize a logistic map.
   mkfifo /tmp/feedgnuplot
   gnuplot < /tmp/feedgnuplot &
   
-  for i in `seq 1 5 1250`;do
-      r=`echo "$i.0 * 0.002925"|bc`
+  for i in `seq 1 5 1500`;do
+      r=`echo "$i.0 * 0.002633"|bc`
       echo -n "$r "
       cat <<EOF > /tmp/feedgnuplot
   <<plot>>
@@ -231,6 +231,9 @@ done
           $pst-vals
   }
 #+end_src
+
+#+RESULTS:
+[[file:pascals-triangle.png]]
 
 ** Checking Pascal's Triangle with Emacs Lisp
 #+name: pst-check

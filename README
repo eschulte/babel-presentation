@@ -39,22 +39,26 @@ presentation:
      (setq org-confirm-babel-evaluate nil)
    #+end_src
 
-3. Open the babel.org file in Emacs, and stepping through the top
-   level headings.  The follow heading require special instructions:
+3. Open the babel.org file in Emacs, and step through the top level
+   headings.  The follow headings require special instructions:
 
    "Export -- supporting reproducible research" This heading will be
-   exported to pdf in order to demonstrate the code evaluation on
-   export RR features of Babel.  First narrow to only this heading
-   with "C-x n S", then export to pdf with "C-c C-e d".  After viewing
-   the resulting pdf, widen with "C-x n w".
+   exported to pdf in order to demonstrate the automatic code
+   evaluation RR features of Org-mode.  First narrow to only this
+   heading with "C-x n S", then export to pdf with "C-c C-e d".  After
+   viewing the resulting pdf, widen with "C-x n w".
 
    "Tangling -- supporting literate programming" This heading will be
-   tangled to produce two shell scripts in the current directory.
-   Tangle with "C-c C-v t", then run the resulting "./run" shell
-   script.  Careful on slower or older hardware as this script is
-   *very* CPU intensive, like many gnuplot "movies" it relies on
-   processing time to control frame rate.
+   tangled to produce two shell scripts in this directory.  Tangle
+   with "C-c C-v t", then run the resulting "./run" shell script.  Be
+   careful on slower or older hardware as this script is *very* CPU
+   intensive -- like many gnuplot "movies" it relies on processing
+   time to control frame rate.
 
    "Example -- Pascal's Triangle with Lisp and Dot" To run the
    examples in this heading simply interactively execute the code
-   blocks in order and view the results.
+   blocks with "C-c C-c" in order and view the results.
+
+For more information and trouble shooting the "Working With Source
+Code" portion of the Org-mode manual, available with "M-x info" and
+online at http://orgmode.org/manual/Working-With-Source-Code.html.
